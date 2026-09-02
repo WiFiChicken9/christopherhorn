@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christopher Hansen — French Horn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0908;
+    --bg-deep:#050505;
+    --panel:#14110c;
+    --gold:#c9a227;
+    --gold-bright:#f0cf7c;
+    --gold-dim:#8a6a24;
+    --cream:#f3ecd9;
+    --muted:#8c8676;
+    --hair:rgba(201,162,39,0.28);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.serif{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    letter-spacing:0.01em;
+    margin:0;
+  }
+
+  a{color:inherit;}
+
+  ::selection{background:var(--gold); color:var(--bg-deep);}
+
+  @media (prefers-reduced-motion: no-preference){
+    .fade-in{
+      animation: fadeIn 1.4s ease-out both;
+    }
+    @keyframes fadeIn{
+      from{opacity:0; transform:translateY(10px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--gold-bright);
+    outline-offset:3px;
+  }
+
+  .wrap{
+    max-width:1040px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse at 78% 20%, rgba(201,162,39,0.13), transparent 55%),
+      linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 100%);
+  }
+
+  .hero-frame{
+    position:absolute;
+    inset:20px;
+    border:1px solid var(--hair);
+    pointer-events:none;
+  }
+
+  .hero-inner{
+    position:relative;
+    padding:120px 32px 90px;
+    max-width:1040px;
+    margin:0 auto;
+    width:100%;
+  }
+
+  .kicker{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:20px;
+    color:var(--gold-bright);
+    margin-bottom:22px;
+  }
+
+  .hero h1{
+    font-size:clamp(52px, 9vw, 108px);
+    line-height:0.98;
+    color:var(--cream);
+  }
+
+  .hero-role{
+    margin-top:20px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(22px, 3vw, 30px);
+    color:var(--muted);
+    max-width:520px;
+    line-height:1.35;
+  }
+
+  .hero-facts{
+    margin-top:56px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:36px;
+    max-width:600px;
+  }
+
+  .hero-fact{
+    font-size:14px;
+    letter-spacing:0.03em;
+    color:var(--muted);
+    padding-top:14px;
+    border-top:1px solid var(--hair);
+    max-width:220px;
+  }
+
+  .scroll-cue{
+    position:absolute;
+    bottom:34px;
+    left:32px;
+    font-size:13px;
+    color:var(--muted);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .scroll-cue .line{
+    width:36px;
+    height:1px;
+    background:var(--gold);
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{
+    padding:110px 0;
+    border-top:1px solid var(--hair);
+  }
+
+  .section-head{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:24px;
+    margin-bottom:64px;
+  }
+  .section-num{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    color:var(--gold);
+    font-size:20px;
+    padding-top:6px;
+  }
+  .section-head h2{
+    font-size:clamp(32px, 4.5vw, 46px);
+    color:var(--cream);
+  }
+  .section-head p{
+    margin-top:14px;
+    color:var(--muted);
+    max-width:520px;
+    font-size:16px;
+    line-height:1.7;
+  }
+
+  /* ---------- PERFORMER ---------- */
+  .performer{
+    max-width:640px;
+  }
+
+  .performer-copy p{
+    font-size:18px;
+    line-height:1.85;
+    color:#dfd8c6;
+    max-width:560px;
+  }
+  .performer-copy p + p{margin-top:22px;}
+
+  .credentials{
+    margin-top:44px;
+    display:grid;
+    gap:0;
+    border-top:1px solid var(--hair);
+  }
+  .credential{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:24px;
+    padding:22px 0;
+    border-bottom:1px solid var(--hair);
+  }
+  .credential dt{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:18px;
+    color:var(--gold-bright);
+  }
+  .credential dd{
+    margin:0;
+    font-size:15px;
+    color:var(--muted);
+    line-height:1.6;
+  }
+
+  /* ---------- STATEMENT ---------- */
+  .statement-section{
+    padding:80px 0;
+    text-align:center;
+  }
+  .statement{
+    margin:0 auto;
+    max-width:640px;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(24px, 3.4vw, 34px);
+    line-height:1.5;
+    color:var(--gold-bright);
+    position:relative;
+    padding-top:28px;
+  }
+  .statement::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:52px;
+    height:1px;
+    background:var(--gold);
+  }
+
+  /* ---------- PROGRAM / PACKAGES ---------- */
+  .program-list{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--hair);
+    border:1px solid var(--hair);
+  }
+
+  .program-item{
+    background:var(--bg);
+    padding:48px 40px;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .program-item.featured{
+    background:var(--panel);
+  }
+
+  .program-roman{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    color:var(--gold);
+    font-size:18px;
+  }
+
+  .program-item h3{
+    margin-top:14px;
+    font-size:34px;
+    color:var(--cream);
+  }
+
+  .program-price{
+    margin-top:16px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:44px;
+    color:var(--gold-bright);
+  }
+  .program-price span{
+    font-size:15px;
+    font-family:'Jost', sans-serif;
+    color:var(--muted);
+    margin-left:8px;
+  }
+
+  .program-desc{
+    margin-top:22px;
+    font-size:15.5px;
+    line-height:1.8;
+    color:#c9c2ae;
+    flex-grow:1;
+  }
+
+  .program-list-items{
+    margin-top:26px;
+    list-style:none;
+    padding:0;
+    display:grid;
+    gap:12px;
+  }
+  .program-list-items li{
+    font-size:14.5px;
+    color:var(--muted);
+    padding-left:18px;
+    position:relative;
+    line-height:1.5;
+  }
+  .program-list-items li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:9px;
+    width:6px;
+    height:1px;
+    background:var(--gold);
+  }
+
+  .program-cta{
+    margin-top:32px;
+    display:inline-flex;
+    width:fit-content;
+    padding-bottom:6px;
+    border-bottom:1px solid var(--gold);
+    font-size:14.5px;
+    letter-spacing:0.02em;
+    color:var(--gold-bright);
+    text-decoration:none;
+    transition:opacity 0.2s ease;
+  }
+  .program-cta:hover{opacity:0.7;}
+
+  .program-note{
+    margin-top:28px;
+    font-size:13.5px;
+    color:var(--muted);
+    font-style:italic;
+    font-family:'Cormorant Garamond', serif;
+    font-size:16px;
+  }
+
+  /* ---------- RESERVE / CONTACT ---------- */
+  .reserve{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+  }
+
+  .reserve-copy p{
+    font-size:18px;
+    line-height:1.85;
+    color:#dfd8c6;
+    max-width:460px;
+  }
+
+  .contact-card{
+    border:1px solid var(--hair);
+    padding:44px;
+    background:var(--panel);
+  }
+
+  .contact-row{
+    padding:18px 0;
+    border-bottom:1px solid var(--hair);
+  }
+  .contact-row:first-child{padding-top:0;}
+  .contact-row:last-child{border-bottom:none; padding-bottom:0;}
+
+  .contact-label{
+    font-size:12.5px;
+    letter-spacing:0.04em;
+    color:var(--muted);
+  }
+  .contact-value{
+    margin-top:8px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:24px;
+    color:var(--gold-bright);
+  }
+  .contact-value a{
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:border-color 0.2s ease;
+  }
+  .contact-value a:hover{
+    border-color:var(--gold-bright);
+  }
+
+  footer{
+    padding:40px 0;
+    border-top:1px solid var(--hair);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .footer-mark{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    color:var(--muted);
+    font-size:15px;
+  }
+  .footer-small{
+    font-size:12.5px;
+    color:var(--muted);
+    opacity:0.7;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .program-list{grid-template-columns:1fr;}
+    .reserve{grid-template-columns:1fr;}
+    .section-head{grid-template-columns:1fr; gap:8px;}
+    .credential{grid-template-columns:1fr; gap:6px;}
+  }
+
+  @media (max-width: 520px){
+    .wrap{padding:0 22px;}
+    .hero-inner{padding:100px 22px 70px;}
+    section{padding:80px 0;}
+    .program-item{padding:36px 26px;}
+    .contact-card{padding:32px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-frame"></div>
+
+  <div class="hero-inner fade-in">
+    <div class="kicker">French Horn, reserved for occasions of consequence</div>
+    <h1>Christopher<br>Hansen</h1>
+    <p class="hero-role">An exceptional French horn performance for weddings, galas, and the most distinguished private events — each engagement prepared individually, to the exacting standard such occasions deserve.</p>
+
+    <div class="hero-facts">
+      <div class="hero-fact">Finalist, Southwest Horn Workshop competition</div>
+      <div class="hero-fact">Trained at Cormont</div>
+      <div class="hero-fact">Performed with multiple orchestras</div>
+      <div class="hero-fact">Based in Salt Lake City, Utah — available to travel nationwide</div>
+    </div>
+  </div>
+
+  <div class="scroll-cue"><span class="line"></span> Scroll</div>
+</header>
+
+<main class="wrap">
+
+  <!-- THE PERFORMER -->
+  <section id="performer">
+    <div class="section-head">
+      <div class="section-num">I.</div>
+      <div>
+        <h2>The Performer</h2>
+      </div>
+    </div>
+
+    <div class="performer">
+      <div class="performer-copy">
+        <p>Christopher Hansen is a French horn player of rare distinction, performing for weddings, private parties, and formal events where nothing less than the finest live music will do. His playing draws on rigorous orchestral training and the discipline of performing under the exact demands of a live event — knowing when to sit quietly beneath conversation and when to command a room's full attention.</p>
+        <p>He has appeared as a competition finalist at the Southwest Horn Workshop, studied at Cormont, and performed with a number of orchestras — a pedigree reflected in every performance he gives. Each engagement is accepted individually and prepared to the specific room, repertoire, and moment it is written for, never a fixed set played the same way twice.</p>
+
+        <dl class="credentials">
+          <div class="credential">
+            <dt>Competition</dt>
+            <dd>Finalist, Southwest Horn Workshop</dd>
+          </div>
+          <div class="credential">
+            <dt>Education</dt>
+            <dd>Studied French horn at Cormont</dd>
+          </div>
+          <div class="credential">
+            <dt>Ensemble work</dt>
+            <dd>Performed with multiple orchestras</dd>
+          </div>
+          <div class="credential">
+            <dt>Based in</dt>
+            <dd>Salt Lake City, Utah — available to travel throughout the United States</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATEMENT -->
+  <section id="statement" class="statement-section">
+    <blockquote class="statement">A performance prepared once, for one occasion — not a repertoire recycled from the last event.</blockquote>
+  </section>
+
+  <!-- THE PROGRAM -->
+  <section id="program">
+    <div class="section-head">
+      <div class="section-num">III.</div>
+      <div>
+        <h2>The Program</h2>
+        <p>Two engagements, each held to the same exacting standard — from a refined presence at your reception to a commissioned recital as the evening's centerpiece.</p>
+      </div>
+    </div>
+
+    <div class="program-list">
+      <div class="program-item">
+        <div class="program-roman">Standard Service</div>
+        <h3>Banquet &amp; Party</h3>
+        <div class="program-price">$1,000</div>
+        <p class="program-desc">A refined musical presence for your reception — dinner, cocktail hour, or a private party where the horn should elevate the room without commanding it. Repertoire is selected to suit the tone and pace of your event.</p>
+        <ul class="program-list-items">
+          <li>Live horn for banquets, receptions, and private parties</li>
+          <li>Repertoire chosen to suit the tone of your event</li>
+          <li>A dedicated performance set for your reception or dinner</li>
+          <li>Custom song requests can be arranged in advance, subject to an additional fee</li>
+        </ul>
+        <a class="program-cta" href="mailto:christopher.hansen092@gmail.com?subject=Standard%20Service%20Inquiry">Inquire about this program</a>
+      </div>
+
+      <div class="program-item featured">
+        <div class="program-roman">Premium Concert</div>
+        <h3>Horn Recital, with Piano</h3>
+        <div class="program-price">$5,000<span>all-inclusive</span></div>
+        <p class="program-desc">A commissioned concert performance, built for your event alone: a full horn recital accompanied by piano, with repertoire chosen and rehearsed specifically for the occasion. This is the centerpiece performance, not the accompaniment to one.</p>
+        <ul class="program-list-items">
+          <li>Full recital program, composed for your event</li>
+          <li>Horn and piano accompaniment</li>
+          <li>Repertoire selected and rehearsed in advance</li>
+          <li>The centerpiece performance for weddings, galas, and formal concerts</li>
+        </ul>
+        <a class="program-cta" href="mailto:christopher.hansen092@gmail.com?subject=Premium%20Concert%20Inquiry">Inquire about this program</a>
+      </div>
+    </div>
+    <p class="program-note">Bespoke programs and combined bookings — ceremony and reception, for instance — are arranged individually on request.</p>
+  </section>
+
+  <!-- RESERVE -->
+  <section id="reserve">
+    <div class="section-head">
+      <div class="section-num">IV.</div>
+      <div>
+        <h2>Reserve a Performance</h2>
+      </div>
+    </div>
+
+    <div class="reserve">
+      <div class="reserve-copy">
+        <p>Christopher accepts a limited number of engagements each season, so each one receives full and undivided preparation. Based in Salt Lake City, Utah, he is available to travel throughout the United States for the right occasion. Booking begins with a short conversation about your event — the setting, the occasion, and which program fits best.</p>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-row">
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:christopher.hansen092@gmail.com">christopher.hansen092@gmail.com</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-label">Phone</div>
+          <div class="contact-value"><a href="tel:8014628132">801-462-8132</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-label">Based in</div>
+          <div class="contact-value">Salt Lake City, Utah</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <div class="footer-mark">Christopher Hansen — French Horn</div>
+  <div class="footer-small">Salt Lake City, Utah — available to travel nationwide, by inquiry</div>
+</footer>
+
+</body>
+</html>
